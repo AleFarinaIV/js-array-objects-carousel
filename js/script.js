@@ -56,8 +56,8 @@ const slides = document.querySelectorAll('.slide');
 // rendo visibile la prima slide
 slides[visibleElement].classList.remove('hide');
 
-// recuper l'icona da usare come pulsante
- const arrowRight = document.getElementById('arrow-right');
+// recupero l'icona da usare come pulsante
+const arrowRight = document.getElementById('arrow-right');
 
 // utilizzo un evento click per cambiare slide
 arrowRight.addEventListener('click', function() {
@@ -69,5 +69,22 @@ arrowRight.addEventListener('click', function() {
     visibleElement++
 
     // svelo la slide successiva
+    slides[visibleElement].classList.remove('hide');
+})
+
+// recupero l'icona da usare come pulsante
+const arrowLeft = document.getElementById('arrow-left');
+
+// utilizzo un evento click per cambiare slide(reverse)
+
+arrowLeft.addEventListener('click', function() {
+
+    // nascondo la slide attiva
+    slides[visibleElement].classList.add('hide');
+
+    // decremento l'indice della slide attiva
+    visibleElement--
+
+    // svelo la slide precedente
     slides[visibleElement].classList.remove('hide');
 })
