@@ -74,7 +74,7 @@ arrowRight.addEventListener('click', function() {
         visibleElement++
 
     }
-    
+
     // svelo la slide successiva
     slides[visibleElement].classList.remove('hide');
 })
@@ -88,8 +88,13 @@ arrowLeft.addEventListener('click', function() {
     // nascondo la slide attiva
     slides[visibleElement].classList.add('hide');
 
-    // decremento l'indice della slide attiva
-    visibleElement--
+    // utilizzo delle condizioni per passare dalla prima slide all'ultima
+    if (visibleElement === 0) {
+        visibleElement = videogames.length - 1;
+    } else {
+        // decremento l'indice della slide attiva
+        visibleElement--
+    }
 
     // svelo la slide precedente
     slides[visibleElement].classList.remove('hide');
