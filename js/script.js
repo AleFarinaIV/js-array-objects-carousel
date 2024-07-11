@@ -32,7 +32,7 @@ const slideContainer = document.getElementById('slider');
 
 // creo la struttura HTML per ogni gioco utilizzando forEach
 videogames.forEach((game, i) => {
-    
+
     // aggiungo una slide al contenitore HTML
     slideContainer.innerHTML +=
 
@@ -45,4 +45,7 @@ videogames.forEach((game, i) => {
             </p>
         </div>
     </div>`
-})
+});
+
+// definisco la slide visibile all'inizio
+let visibleElement = 0;
