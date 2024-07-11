@@ -37,13 +37,13 @@ videogames.forEach((game, i) => {
     slideContainer.innerHTML +=
 
     // creo la forma per ogni slide
-    `<div class="container">
-        <div class="content hide">
-            <img src="./${game.image}" alt="">
+    `<div class="slide hide">
+        <img src="./${game.image}" alt="">
+        <div class="description">
             <h3>${game.title}</h3>
             <p>${game.text}</p>
-            </p>
         </div>
+        </p>
     </div>`
 });
 
@@ -51,4 +51,23 @@ videogames.forEach((game, i) => {
 let visibleElement = 0;
 
 // recupero tutte le slide
-const slides = document.querySelectorAll('.content')
+const slides = document.querySelectorAll('.slide');
+
+// rendo visibile la prima slide
+slides[visibleElement].classList.remove('hide');
+
+// recuper l'icona da usare come pulsante
+ const arrowRight = document.getElementById('arrow-right');
+
+// utilizzo un evento click per cambiare slide
+arrowRight.addEventListener('click', function() {
+
+    // nascondo la slide attiva
+    slides[visibleElement].classList.add('hide');
+
+    // incremento l'indice della slide attiva
+    visibleElement++
+
+    // svelo la slide successiva
+    slides[visibleElement].classList.remove('hide');
+})

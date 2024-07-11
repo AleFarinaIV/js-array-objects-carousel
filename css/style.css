@@ -8,22 +8,31 @@ body {
     font-family: Arial, Helvetica, sans-serif;
 }
 
-.container {
+#slider {
     width: 900px;
-    margin: 35px auto;
-    padding: 15px;
-    border: 1px solid black;
 }
 
-.content {
-    width: 100%;
-    padding: 15px;
-    border: 1px solid black;
+.slide {
+    padding: 70px 100px;
+}
+
+.description {
+    padding: 0 15px;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+    border-bottom: 1px solid black;
+    border-radius: 0 0 15px 15px;
+
 }
 
 h3,
 p {
-    margin: 35px 0;
+    margin: 10px 150px;
+    text-align: center;
+}
+
+p {
+    margin-bottom: 20px;
 }
 
 img {
@@ -32,6 +41,17 @@ img {
     object-fit: cover;
 }
 
+.flex-align {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .hide {
     display: none;
+}
+
+.text-c {
+    margin-top: 50px;
+    text-align: center;
 }
