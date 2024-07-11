@@ -65,9 +65,16 @@ arrowRight.addEventListener('click', function() {
     // nascondo la slide attiva
     slides[visibleElement].classList.add('hide');
 
-    // incremento l'indice della slide attiva
-    visibleElement++
+    // utilizzo delle condizioni per passare dall'ultima slide ala prima
+    if (visibleElement === videogames.length - 1) {
+        visibleElement = 0;
+    }else {
 
+        // incremento l'indice della slide attiva
+        visibleElement++
+
+    }
+    
     // svelo la slide successiva
     slides[visibleElement].classList.remove('hide');
 })
@@ -76,7 +83,6 @@ arrowRight.addEventListener('click', function() {
 const arrowLeft = document.getElementById('arrow-left');
 
 // utilizzo un evento click per cambiare slide(reverse)
-
 arrowLeft.addEventListener('click', function() {
 
     // nascondo la slide attiva
