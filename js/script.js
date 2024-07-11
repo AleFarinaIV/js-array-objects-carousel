@@ -38,7 +38,7 @@ videogames.forEach((game, i) => {
 
     // creo la forma per ogni slide
     `<div class="container">
-        <div class="content">
+        <div class="content hide">
             <img src="./${game.image}" alt="">
             <h3>${game.title}</h3>
             <p>${game.text}</p>
@@ -49,3 +49,6 @@ videogames.forEach((game, i) => {
 
 // definisco la slide visibile all'inizio
 let visibleElement = 0;
+
+// recupero tutte le slide
+const slides = document.querySelectorAll('.content')
