@@ -31,7 +31,7 @@ const videogames = [
 const slideContainer = document.getElementById('slider');
 
 // creo la struttura HTML per ogni gioco utilizzando forEach
-videogames.forEach((game, i) => {
+videogames.forEach((game) => {
 
     // aggiungo una slide al contenitore HTML
     slideContainer.innerHTML +=
