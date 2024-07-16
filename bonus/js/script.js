@@ -73,27 +73,7 @@ thumbnails[visibleElement].classList.remove('opacity')
 const arrowRight = document.getElementById('arrow-right');
 
 // utilizzo un evento click per cambiare slide
-arrowRight.addEventListener('click', function() {
-
-    // nascondo la slide attiva
-    slides[visibleElement].classList.add('hide');
-
-    thumbnails[visibleElement].classList.add('opacity')
-
-    // utilizzo delle condizioni per passare dall'ultima slide ala prima
-    if (visibleElement === videogames.length - 1) {
-        visibleElement = 0;
-    }else {
-
-        // incremento l'indice della slide attiva
-        visibleElement++
-    }
-
-    // svelo la slide successiva
-    slides[visibleElement].classList.remove('hide');
-
-    thumbnails[visibleElement].classList.remove('opacity')
-})
+arrowRight.addEventListener('click', nextSlide)
 
 // recupero l'icona da usare come pulsante
 const arrowLeft = document.getElementById('arrow-left');
@@ -118,14 +98,27 @@ arrowLeft.addEventListener('click', function() {
     thumbnails[visibleElement].classList.remove('opacity')
 })
 
-// // funzione per scorrere le slide
-//     function nextSlide() {
-//         // resetto la slide visibile
-//         slideContainer.style.transform = `translateX(-${visibleElement * 100}%)`;
+// devo far scorrere le slide ogni 3 secodndi
+setInterval(nextSlide, 3000);
 
-//         // incremento l'indice della slide visibile
-//         visibleElement = (visibleElement + 1) % videogames.length;
-//     }
+function nextSlide() {
 
-//     // funzione per avviare il timer per scorrere le slide automaticamente
-//     setInterval(nextSlide, 5000);
+    // nascondo la slide attiva
+    slides[visibleElement].classList.add('hide');
+
+    thumbnails[visibleElement].classList.add('opacity')
+
+    // utilizzo delle condizioni per passare dall'ultima slide ala prima
+    if (visibleElement === videogames.length - 1) {
+        visibleElement = 0;
+    }else {
+
+        // incremento l'indice della slide attiva
+        visibleElement++
+    }
+
+    // svelo la slide successiva
+    slides[visibleElement].classList.remove('hide');
+
+    thumbnails[visibleElement].classList.remove('opacity')
+}
