@@ -30,6 +30,8 @@ const videogames = [
 // recupero il contenitore HTML per le slide
 const slideContainer = document.getElementById('slider');
 
+const thumbnailsContainer = document.getElementById('thumbnails');
+
 // creo la struttura HTML per ogni gioco utilizzando forEach
 videogames.forEach((game) => {
 
@@ -45,6 +47,13 @@ videogames.forEach((game) => {
         </div>
         </p>
     </div>`
+
+    // aggiungo un thumbnail per ogni gioco
+    thumbnailsContainer.innerHTML +=
+
+    // creo la forma per ogni thumbnail
+    `<img src="./${game.image}" alt="${game.title}" class="mini-size opacity">`
+
 });
 
 // definisco la slide visibile all'inizio
@@ -53,8 +62,12 @@ let visibleElement = 0;
 // recupero tutte le slide
 const slides = document.querySelectorAll('.slide');
 
+const thumbnails = document.querySelectorAll('.mini-size');
+
 // rendo visibile la prima slide
 slides[visibleElement].classList.remove('hide');
+
+thumbnails[visibleElement].classList.remove('opacity')
 
 // recupero l'icona da usare come pulsante
 const arrowRight = document.getElementById('arrow-right');
@@ -65,6 +78,8 @@ arrowRight.addEventListener('click', function() {
     // nascondo la slide attiva
     slides[visibleElement].classList.add('hide');
 
+    thumbnails[visibleElement].classList.add('opacity')
+
     // utilizzo delle condizioni per passare dall'ultima slide ala prima
     if (visibleElement === videogames.length - 1) {
         visibleElement = 0;
@@ -72,11 +87,12 @@ arrowRight.addEventListener('click', function() {
 
         // incremento l'indice della slide attiva
         visibleElement++
-
     }
 
     // svelo la slide successiva
     slides[visibleElement].classList.remove('hide');
+
+    thumbnails[visibleElement].classList.remove('opacity')
 })
 
 // recupero l'icona da usare come pulsante
@@ -87,6 +103,7 @@ arrowLeft.addEventListener('click', function() {
 
     // nascondo la slide attiva
     slides[visibleElement].classList.add('hide');
+    thumbnails[visibleElement].classList.add('opacity')
 
     // utilizzo delle condizioni per passare dalla prima slide all'ultima
     if (visibleElement === 0) {
@@ -98,6 +115,7 @@ arrowLeft.addEventListener('click', function() {
 
     // svelo la slide precedente
     slides[visibleElement].classList.remove('hide');
+    thumbnails[visibleElement].classList.remove('opacity')
 })
 
 // // funzione per scorrere le slide
