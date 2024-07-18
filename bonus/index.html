@@ -8,15 +8,20 @@
             integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
             crossorigin="anonymous" referrerpolicy="no-referrer" />
         <link rel="stylesheet" href="./css/style.css">
-        <title>Document</title>
+        <title>Carosello Videogames</title>
     </head>
     <body>
         <h1 class="text-c">TOP 5 GAMES OF WEEK</h1>
+        <div class="flex-align justify-content-evenly mb-50">
+            <button id="start-stop"><i class="fa-solid fa-play me-5"></i><i class="fa-solid fa-pause"></i></button>
+            <button id="reverse"><i class="fa-solid fa-backward"></i><i class="fa-solid fa-forward d-none"></i></button>
+        </div>
         <div id="thumbnails"></div>
         <div class="flex-align">
-            <i id="arrow-left" class="fa-regular fa-circle-left"></i>
-            <div id="slider"></div>
-            <i id="arrow-right" class="fa-regular fa-circle-right"></i>
+            <div id="slider" class="relative">
+                <i id="arrow-left" class="fa-regular fa-circle-left absolute"></i>
+                <i id="arrow-right" class="fa-regular fa-circle-right absolute"></i>
+            </div>
         </div>
         <script src="./js/script.js"></script>
     </body>

@@ -79,27 +79,51 @@ arrowRight.addEventListener('click', nextSlide)
 const arrowLeft = document.getElementById('arrow-left');
 
 // utilizzo un evento click per cambiare slide(reverse)
-arrowLeft.addEventListener('click', function() {
+arrowLeft.addEventListener('click', previousSlide)
 
-    // nascondo la slide attiva
-    slides[visibleElement].classList.add('hide');
-    thumbnails[visibleElement].classList.add('opacity')
+const btnStart_Stop = document.getElementById('start-stop')
 
-    // utilizzo delle condizioni per passare dalla prima slide all'ultima
-    if (visibleElement === 0) {
-        visibleElement = videogames.length - 1;
-    } else {
-        // decremento l'indice della slide attiva
-        visibleElement--
+const btnReverse = document.getElementById('reverse')
+
+let nextInterval = null
+
+let reverseInterval = true
+
+let nextIcon = document.querySelector('.fa-forward')
+
+let previousIcon = document.querySelector('.fa-backward')
+
+function reverseDirection() {
+        nextIcon.classList.remove('d-none')
+        previousIcon.classList.add('d-none')
+    
+    if (reverseInterval === true) {
+        clearInterval(nextInterval)
+        nextInterval = setInterval(previousSlide, 1000)
+        reverseInterval = false
+        console.log('FALSE')
+    }else {
+        nextInterval = setInterval(nextSlide, 1000)
+        reverseInterval = true
+        nextIcon.classList.add('d-none')
+        previousIcon.classList.remove('d-none')
+        console.log('TRUE')
     }
+}
 
-    // svelo la slide precedente
-    slides[visibleElement].classList.remove('hide');
-    thumbnails[visibleElement].classList.remove('opacity')
+btnStart_Stop.addEventListener('click', function () {
+
+    if (nextInterval === null && reverseInterval === true) {
+        nextInterval = setInterval(nextSlide, 1000)
+    }else if (nextInterval !== null) {
+        clearInterval(nextInterval)
+        nextInterval = null
+    }else if (reverseInterval === false) {
+        nextInterval = setInterval(previousSlide, 1000)
+    }
 })
 
-// devo far scorrere le slide ogni 3 secodndi
-setInterval(nextSlide, 3000);
+btnReverse.addEventListener('click', reverseDirection)
 
 function nextSlide() {
 
@@ -120,5 +144,23 @@ function nextSlide() {
     // svelo la slide successiva
     slides[visibleElement].classList.remove('hide');
 
+    thumbnails[visibleElement].classList.remove('opacity')
+}
+
+function previousSlide() {
+    // nascondo la slide attiva
+    slides[visibleElement].classList.add('hide');
+    thumbnails[visibleElement].classList.add('opacity')
+
+    // utilizzo delle condizioni per passare dalla prima slide all'ultima
+    if (visibleElement === 0) {
+        visibleElement = videogames.length - 1;
+    } else {
+        // decremento l'indice della slide attiva
+        visibleElement--
+    }
+
+    // svelo la slide precedente
+    slides[visibleElement].classList.remove('hide');
     thumbnails[visibleElement].classList.remove('opacity')
 }
